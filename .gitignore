@@ -1,0 +1,4 @@
+node_modules
+build/assets/js
+build/assets/**/*.min.css
+config.js
