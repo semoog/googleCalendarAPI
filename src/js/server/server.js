@@ -81,15 +81,15 @@ app.get('/auth/google/callback',
 
 app.get('/event', (req, res) => {
 	let event = {
-		'summary': 'Donovan sux',
+		'summary': 'Donovan sux cox',
 		'location': '560 S 100 W St, Provo, UT 84601',
 		'description': 'I made an event baby.',
 		'start': {
-			'dateTime': '2016-07-06T14:00:00-07:00',
+			'dateTime': '2016-07-07T14:00:00-07:00',
 			'timeZone': 'America/Los_Angeles',
 		},
 		'end': {
-			'dateTime': '2016-07-06T17:00:00-07:00',
+			'dateTime': '2016-07-07T17:00:00-07:00',
 			'timeZone': 'America/Los_Angeles',
 		},
 		'recurrence': [
@@ -120,14 +120,16 @@ app.get('/event', (req, res) => {
 
 	calendar.events.insert({
     auth: oauth2Client,
-		calendarId: 'primary',
+		calendarId: 'fcsdvkpqktb7qieirpun9glnvo@group.calendar.google.com',
 		resource: event,
+    sendNotifications: true
 	}, function (err, event) {
 		if (err) {
 			console.log('There was an error contacting the Calendar service: ' + err);
 			return;
 		}
 		console.log('Event created: %s', event.htmlLink);
+    res.redirect('/');
 	});
 });
 
